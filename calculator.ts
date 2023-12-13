@@ -31,7 +31,7 @@ function substraction(values: number[]) {
 }
 
 /** DIVISION */
-function division<T extends number>(values: positivInts<T>[]) {
+function division<T extends number[]>(values: positivInts<T>) {
   return values.reduce((a, b) => a / b, 0);
 }
 
@@ -44,7 +44,9 @@ function division2(values: number[]) {
   } catch (_) {}
 }
 
-type positivInts<T extends number> = `${T}` extends `-${string}` ? never : T;
+type positivInts<T extends number []> = {
+    [Key in keyof T] : `${T[Key]}` extends `-${string}` ? never : T[Key]
+}
 
 // not working for array yet...
 division([-1, 2, 3, 4, 5]);
