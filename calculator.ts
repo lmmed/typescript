@@ -1,52 +1,20 @@
-/** ADDITION */
-// we can specify the return type of the function or typescript do it by himself
-function addition(val1: number, val2: number): number {
-  return val1 + val2;
-}
+class Calculator {
+    #lastResult = 0;
+    constructor() {}
 
-/** ADDITION LIST */
-function additionList(values: number[]) {
-  return values.reduce((a, b) => a + b, 0);
-}
-
-/** MULTIPLICATION */
-function multiplication(values: number[]) {
-  let result = 0;
-
-  values.forEach((value, idx) => {
-    if (idx === 0) {
-      result = value;
-      return;
+    set addition(val1: number) {
+        this.#lastResult = val1 ;
     }
 
-    result *= value;
-  });
+    additionList(values: number[]) {
+        return this.#lastResult = values.reduce((a,b) => a + b, 0);
+    }
 
-  return result;
+    get result() {
+        return this.#lastResult;
+    }
 }
 
-/** SUBSTRACTION */
-function substraction(values: number[]) {
-  return values.reduce((a, b) => a - b, 0);
-}
+const t = new Calculator();
 
-/** DIVISION */
-function division<T extends number[]>(values: positivInts<T>) {
-  return values.reduce((a, b) => a / b, 0);
-}
-
-function division2(values: number[]) {
-  try {
-    return values.reduce((a, b) => {
-      if (b < 0) throw new Error("Negative value not supported");
-      return a / b;
-    }, 0);
-  } catch (_) {}
-}
-
-type positivInts<T extends number []> = {
-    [Key in keyof T] : `${T[Key]}` extends `-${string}` ? never : T[Key]
-}
-
-// not working for array yet...
-division([-1, 2, 3, 4, 5]);
+t.addition
