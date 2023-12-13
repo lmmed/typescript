@@ -8,9 +8,32 @@ export class Supplier implements Payable {
 }
 
 export class Employee implements Payable {
+  #firstName: string;
+  #lastName: string;
+  #group?: Group;
+  constructor(firstName: string, lastName: string) {
+    this.#firstName = firstName;
+    this.#lastName = lastName;
+  }
   sendPayment(): void {
     console.log("Employee");
   }
+  addToGroup(group: Group) {
+    this.#group = group;
+  }
+  show() {
+    console.log(
+      `${this.#firstName}, ${this.#lastName.toUpperCase()}: ${
+        this.#group ?? "Aucun groupe connu"
+      }`
+    );
+  }
+}
+
+export enum Group {
+  "Marketing" = "Marketing",
+  "Finance" = "Finance",
+  "Dev" = "Dev",
 }
 
 export class Company {
