@@ -47,7 +47,3 @@ if(false && throwError()) {
 for(let toto in person) {
     console.log(person[toto])
 }
-
-for(let toto in "person") {
-    console.log(toto)
-}
