@@ -1,39 +1,47 @@
 interface Payable {
-  sendPayment(): void;
+    sendPayment(): void;
 }
 
-class Supplier implements Payable {
-  sendPayment(): void {
-    console.log("supplier");
-  }
+class Person {
+    constructor(readonly firstname: string, readonly lastname:string) { }
 }
 
-type EmployeeType = "Marketing" | "Finance" | "RH" | "Dev";
-
-class Employee implements Payable {
-  #type!: EmployeeType
-
-  constructor(type: EmployeeType) {
-    this.#type = type;
-  }
-
-  sendPayment(): void {
-    console.log("Employee");
-  }
-
-  get type() {
-    return this.#type;
-  }
+class Employee extends Person implements Payable  {
+    sendPayment(): void {
+        console.log(`paid employee --- ${this.firstname} ${this.lastname}`);
+    }
 }
 
-class Company {
-  sendPayments(toBePaid: Payable[]): void {
-    toBePaid.forEach((p) => {
-      p.sendPayment();
-    });
-  }
+class Supplier extends Person implements Payable {
+    sendPayment(): void {
+        console.log(`paid supplier --- ${this.firstname} ${this.lastname}`);
+    }
 }
 
-const company = new Company();
+class Group {
+    #employees: Payable[] = [];
+    constructor(readonly name: string) { }
 
-company.sendPayments([new Employee('Dev'), new Supplier()]);
+    public addEmployee = (employee: Payable): Group => {
+        this.#employees.push(employee);
+        return this;
+    }
+
+    public addEmployees = (employees: Payable[]): Group => {
+        this.#employees.push(...employees);
+        return this;
+    }
+
+    sendPayments() {
+        this.#employees.forEach(p => p.sendPayment());
+    }
+}
+
+const emp = new Employee('Titi', 'Tutu');
+
+const supp = new Supplier('Toto', 'Tata');
+const group = new Group('Marketing');
+
+group.addEmployees([emp, supp]);
+
+group.sendPayments();
