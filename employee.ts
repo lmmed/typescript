@@ -1,12 +1,12 @@
 class Group {
   name: string;
-  elements: Person[];
+  elements: Employee[];
   constructor(name: string) {
     this.name = name;
     this.elements = [];
   }
-  add(person: Person) {
-    this.elements.push(person);
+  add(employee: Employee) {
+    this.elements.push(employee);
   }
 }
 
@@ -21,13 +21,15 @@ class Person {
 }
 
 class Employee {
+  id: number;
   person: Person;
   group: Group | null;
-  constructor(person: Person, group: Group | null) {
+  constructor(id: number, person: Person, group: Group | null) {
+    this.id = id;
     this.person = person;
     this.group = group;
     if (group) {
-      group?.add(this.person);
+      group?.add(this);
     }
   }
 }
@@ -38,7 +40,7 @@ const finance = new Group("finance");
 const mo = new Person("Mohammed", "Lamhaouar");
 const jack = new Person("Jack", "Riley");
 
-const employee1 = new Employee(mo, marketing);
-const employee2 = new Employee(jack, finance);
+const employee1 = new Employee(1, mo, marketing);
+const employee2 = new Employee(2, jack, finance);
 
-console.log(employee1.group?.elements);
+console.log(employee1.group?.elements, finance.elements);
