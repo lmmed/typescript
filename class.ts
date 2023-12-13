@@ -60,7 +60,7 @@ class Group {
 const emp = new Employee('Titi', 'Tutu');
 
 const supp = new Supplier('Toto', 'Tata');
-const group = new Group('Marketing');
+const group = new Group('MARKETING');
 
 group.addEmployees([emp, supp]);
 group.addCommission(emp)
