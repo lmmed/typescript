@@ -1,12 +1,22 @@
 interface CanPay {
-  sendPayment(): void;
+  sendPayment(toBePaid: CanBePaid[]): void;
 }
 interface CanBePaid {
   toBePaid: number;
-  receivePayment(): void;
+  sendPayment(): void;
 }
 
-class Group implements CanPay {
+class Company implements CanPay {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  sendPayment(toBePaid: CanBePaid[]) {
+    toBePaid.forEach((p) => p.sendPayment());
+  }
+}
+
+class Group {
   name: string;
   employees: Employee[];
   suppliers: Supplier[];
@@ -20,15 +30,6 @@ class Group implements CanPay {
   }
   addSupplier(supplier: Supplier) {
     this.suppliers.push(supplier);
-  }
-  sendPayment(): void {
-    console.log("pay up group");
-    this.employees.forEach((employee) => {
-      employee.receivePayment();
-    });
-    this.suppliers.forEach((employee) => {
-      employee.receivePayment();
-    });
   }
 }
 
@@ -48,10 +49,10 @@ class Supplier implements CanBePaid {
 
   constructor(name: string) {
     this.name = name;
-    this.toBePaid = 0;
+    this.toBePaid = Math.random() * 1000;
   }
 
-  receivePayment(): void {
+  sendPayment(): void {
     console.log("pay supplier");
   }
 }
@@ -65,13 +66,18 @@ class Employee implements CanBePaid {
     this.id = id;
     this.person = person;
     this.#group = group;
-    this.toBePaid = 0;
+    this.toBePaid = Math.random() * 1000;
     if (group) {
       group?.addEmployee(this);
     }
   }
-  receivePayment(): void {
-    console.log("pay employee");
+  sendPayment(): void {
+    console.log(
+      "pay employee",
+      this.person.firstName,
+      this.person.lastName,
+      this.toBePaid
+    );
   }
 }
 
@@ -89,5 +95,11 @@ const paperClipMaker = new Supplier("paperclip");
 marketing.addSupplier(paperClipMaker);
 finance.addSupplier(paperClipMaker);
 
-finance.sendPayment();
-finance.sendPayment();
+const company = new Company("company");
+
+company.sendPayment([
+  ...marketing.employees,
+  ...marketing.suppliers,
+  ...finance.employees,
+  ...finance.suppliers,
+]);
