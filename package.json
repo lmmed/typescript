@@ -1,0 +1,20 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmmed/typescript"
+  },
+  "author": "crobert",
+  "license": "ISC",
+  "devDependencies": { 
+    "prettier": "^3.1.1"
+  }
+}
