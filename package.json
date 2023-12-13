@@ -1,0 +1,12 @@
+{
+  "name": "formation-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/calculator.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
