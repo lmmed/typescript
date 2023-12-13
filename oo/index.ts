@@ -50,28 +50,46 @@ export class Employee extends Payable {
   setGroup(group: Group) {
     this.#group = group;
   }
+  getDisplayName() {
+    return `${this.#firstName} ${this.#lastName.toUpperCase()}`;
+  }
   show() {
     console.log(
-      `${this.#firstName}, ${this.#lastName.toUpperCase()}: ${
-        this.#group ?? "Aucun groupe connu"
-      }`
+      `${this.getDisplayName()}: ${this.#group ?? "Aucun groupe connu"}`
     );
+  }
+  performSale(_amount: number) {
+    console.log("Merci, mais pas de commission pour toi");
+  }
+}
+
+export class SalesEmployee extends Employee {
+  performSale(amount: number) {
+    if (amount < 0) {
+      throw new Error("Le montant de la vente ne peut pas être négative");
+    }
+    console.log("Merci, voilà une commission pour toi");
+    this.sendPayment(amount * 0.05);
   }
 }
 
 export enum Group {
+  "Sales" = "Sales",
   "Marketing" = "Marketing",
   "Finance" = "Finance",
   "Dev" = "Dev",
 }
 
 export class Team {
+  #name: Group;
   #employees: Employee[] = [];
-  constructor(readonly name: Group) {}
+  constructor(name: Group) {
+    this.#name = name;
+  }
 
   addEmployee(employee: Employee) {
     this.#employees.push(employee);
-    employee.setGroup(this.name);
+    employee.setGroup(this.#name);
   }
   itsPaydayFellas(amount: number) {
     this.#employees.forEach((employee) => {
