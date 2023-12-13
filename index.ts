@@ -34,4 +34,4 @@ class Calculatrice {
 
 const test = new Calculatrice();
 
-console.log(test.add(5).add(5).sub(2).div(1)?.mul(5).div(0));
+console.log(test.add(5).add(5).sub(2).div(1).mul(5).div(0));
