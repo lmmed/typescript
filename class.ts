@@ -1,10 +1,17 @@
 import Employee from "./class/Employee";
 import Group from "./class/Group";
+import Supplier from "./class/Supplier";
 
-const mohamed = new Employee({firstName: 'Mohamed', lastName: "LAMHAOUAR"});
+const titi = new Employee("Titi", "TATA", 100);
 const marketingGroup = new Group("Marketing");
-marketingGroup.addMember(mohamed);
+marketingGroup.addMember(titi);
 
 const financeGroup = new Group("Finance");
-const jack = new Employee({firstName: 'Jack', lastName: "RILEY"});
-financeGroup.addMember(jack);
+const test = new Employee( "Test", "TOTO", 100);
+financeGroup.addMember(test);
+
+
+const supplier = new Supplier("OTO", 250);
+titi.sendPayment();
+test.sendPayment();
+supplier.sendPayment();

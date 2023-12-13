@@ -1,15 +1,14 @@
 import Payable from "./Payable";
 
 export default  class Employee implements Payable {
-  firstName: string;
-  lastName: string;
 
-  constructor({firstName, lastName}: {firstName: string, lastName: string}) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
+  constructor(
+    readonly firstName: string,
+    readonly lastName: string,
+    readonly salary: number
+  ) {}
 
   sendPayment(): void {
-      console.log('Supplier');
+      console.log(`${this.firstName} ${this.lastName} a était payé ${this.salary}`);
   }
 }
