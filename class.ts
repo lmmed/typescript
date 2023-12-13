@@ -30,8 +30,8 @@ class Supplier extends Person implements Payable {
 }
 
 enum Commission {
-    Marketing = 5,
-    Dev = 0
+    MARKETING = 5,
+    DEV = 0
 }
 
 class Group {
