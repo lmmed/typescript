@@ -1,5 +1,11 @@
 /** ADDITION */
-function addition(values: number[]) {
+// we can specify the return type of the function or typescript do it by himself
+function addition(val1: number, val2: number): number {
+  return val1 + val2;
+}
+
+/** ADDITION LIST */
+function additionList(values: number[]) {
   return values.reduce((a, b) => a + b, 0);
 }
 
@@ -19,11 +25,14 @@ function multiplication(values: number[]) {
   return result;
 }
 
+/** SUBSTRACTION */
+function substraction(values: number[]) {
+  return values.reduce((a, b) => a - b, 0);
+}
+
 /** DIVISION */
 function division<T extends number>(values: positivInts<T>[]) {
-  return values.reduce((a, b) => {
-    return a / b;
-  }, 0);
+  return values.reduce((a, b) => a / b, 0);
 }
 
 function division2(values: number[]) {
@@ -37,5 +46,5 @@ function division2(values: number[]) {
 
 type positivInts<T extends number> = `${T}` extends `-${string}` ? never : T;
 
-// not working for array yet
+// not working for array yet...
 division([-1, 2, 3, 4, 5]);
