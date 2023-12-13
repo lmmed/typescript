@@ -1,9 +1,8 @@
 import Payable from "./Payable";
 import Seller from "./Seller";
 
-export default  class Employee  extends Seller implements Payable {
-
-  commissionPercentage: number = 5;
+export default  class Developer extends Seller implements Payable {
+  commissionPercentage: number = 0;
 
   constructor(
     readonly firstName: string,
