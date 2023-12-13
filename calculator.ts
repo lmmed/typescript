@@ -20,7 +20,6 @@ function multiplication(values: number[]) {
 }
 
 /** DIVISION */
-
 function division<T extends number>(values: positivInts<T>[]) {
   return values.reduce((a, b) => {
     return a / b;
@@ -38,5 +37,5 @@ function division2(values: number[]) {
 
 type positivInts<T extends number> = `${T}` extends `-${string}` ? never : T;
 
-// not working for
+// not working for array yet
 division([-1, 2, 3, 4, 5]);
