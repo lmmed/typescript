@@ -9,9 +9,11 @@ export class Catalog {
         this.#products.push(product);
     }
     findProductByRef(ref:string) {
-        this.#products.find(p => p.ref === ref);
+        const product = this.#products.find(p => p.ref === ref);
+        console.log(product);
     }
     findProductByFamily(familyName:string) {
-        this.#products.find(p => p.family.name === familyName);
+        const products = this.#products.filter(p => p.family.name === familyName);
+        console.log(products);
     }
 }

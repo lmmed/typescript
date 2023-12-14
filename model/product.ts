@@ -4,7 +4,7 @@ export class Product {
     #limitLowStock = 5;
     
     
-    constructor(private qte:number, readonly ref:string, private price:number,private family: Family, private decription?: string)  {
+    constructor(private qte:number, readonly ref:string, private price:number,readonly family: Family, private decription?: string)  {
         family.addProduct(this);
      }
 
@@ -24,4 +24,6 @@ export class Product {
             console.log("alert low stock !!!");
         }
     }
+
+
 }
