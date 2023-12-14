@@ -1,3 +1,4 @@
+import Family from "../../model/Family";
 import Product from "../../model/Product";
 import IProductDirectory from "../IProductDirectory";
 
@@ -12,6 +13,10 @@ export default class ProductDirectory implements IProductDirectory {
       return this.list.filter(product => product.description.includes(description));
   }
 
+  searchByFamily(family:Family):Product[]{
+    return this.list.filter((product) => product.family === family);
+  }
+
   changePrice(ref: string, price: number): void {
       const product = this.searchByRef(ref);
       if(product){
@@ -23,8 +28,8 @@ export default class ProductDirectory implements IProductDirectory {
       }
   }
 
-  addProduct(ref: string, price: number, family: string): void {
-      this.list.push(new Product(ref,price));
+  addProduct(ref: string, price: number, family: Family): void {
+      this.list.push(new Product(ref,price, family));
   }
 
   deleteProduct(ref:string):void {

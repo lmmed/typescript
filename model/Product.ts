@@ -1,4 +1,12 @@
+import Family from "./Family";
+
 export default class Product {
+  public get family(): Family {
+    return this._family;
+  }
+  public set family(value: Family) {
+    this._family = value;
+  }
   public get price(): number {
     return this._price;
   }
@@ -29,9 +37,10 @@ export default class Product {
   constructor(
     private _ref: string,
     private _price: number,
-    private _description: string = ''
+    private _family: Family,
+    private _description: string = '',
   ){
-
+    this.family.products.push(this);
   }
 
   remove(quantity:number){
