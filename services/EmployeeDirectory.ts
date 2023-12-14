@@ -1,3 +1,4 @@
+import { Developpeur } from "../models/developeur";
 import { Employee } from "../models/employee";
 import { PhoneBook } from "../models/phonebook";
 
@@ -11,7 +12,10 @@ export class EmployeePhoneBook extends PhoneBook<Employee> {
     )
       .then((res) => res.json())
       .then((list) => {
-        this.items = list;
+        this.items = list.map(
+          (el) => new Developpeur(el.id, el.firstName, el.lastName, el.salaire)
+        );
+        return this.items;
       })
       .catch((e) => {
         console.error(e);
