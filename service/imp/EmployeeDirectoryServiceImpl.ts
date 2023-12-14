@@ -8,6 +8,20 @@ export class EmployeeDirectoryServiceImpl implements IEmployeeDirectoryService {
     this.employees = employees;
   }
 
+  recupererEmploye():void {
+    new Promise((resolve, reject) => {
+      const response = fetch("https://657aa1961acd268f9afb6388.mockapi.io/api/emplyee/all", {signal: AbortSignal.timeout(5000)});
+      response.then(r => {
+          r.json().then(json => {
+            this.employees = json;
+            console.log(this.employees);
+          })
+      }).catch(reason => {
+        console.log(reason);
+      });
+    })
+  }
+
   addEmployees(employees: Employee[]) {
     this.employees.push(...employees);
   }

@@ -6,6 +6,7 @@ import {
   Supplier,
   Team,
 } from "./oo/index";
+import { EmployeeDirectoryServiceImpl } from "./service/imp/EmployeeDirectoryServiceImpl";
 
 const company = new Company("OpenStudio");
 const employe1 = new Developer("John", "Doe");
@@ -14,6 +15,8 @@ const supplier = new Supplier("My Supplier");
 const marketing = new Team(Group.Marketing);
 const finance = new Team(Group.Finance);
 const sales = new Team(Group.Sales);
+const glossaryEmployees = new EmployeeDirectoryServiceImpl([]);
+
 marketing.addEmployee(employe1);
 sales.addEmployee(employe2);
 company.addTeam(marketing);
@@ -30,3 +33,6 @@ supplier.showPaymentsAmount();
 employe1.performSale(1000);
 employe2.performSale(0);
 employe2.performSale(1000);
+
+
+glossaryEmployees.recupererEmploye();
