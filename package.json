@@ -5,8 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/calculator.js"
+    "start": "node ./dist/class.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.9"
+  }
 }
