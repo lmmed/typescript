@@ -1,3 +1,5 @@
+import { CatalogTypes } from "../types/catalog.types";
+import { Category } from "./Category";
 import { Product } from "./Product";
 
 class Catalog {
@@ -8,7 +10,7 @@ class Catalog {
     }
   
     // Fonction pour chercher un produit par référence
-    findProductByReference(reference: string): Product | undefined {
+    findProductByReference(reference: number): Product | undefined {
       return this.products.find(product => product.reference === reference);
     }
   
@@ -18,12 +20,12 @@ class Catalog {
     }
   
     // Fonction pour chercher un produit par catégorie
-    findProductByCategory(category: string): Product[] {
+    findProductByCategory(category: number): Product[] {
       return this.products.filter(product => product.category === category);
     }
   
     // Fonction pour changer le produit (référence, prix)
-    updateProduct(reference: string, newReference: string, newPrice: number): void {
+    updateProduct(reference: number, newReference: number, newPrice: number): void {
       const index = this.products.findIndex(product => product.reference === reference);
   
       if (index !== -1) {
@@ -36,7 +38,7 @@ class Catalog {
     }
   
     // Fonction pour ajouter un produit (référence, prix, catégorie)
-    addProduct(newReference: string, description: string, price: number, category: string): void {
+    addProduct(newReference: number, description: string, price: number, category: Category[]): void {
       const newProduct: Product = {
         reference: newReference,
         description: description,
@@ -49,7 +51,7 @@ class Catalog {
     }
   
     // Fonction pour supprimer un produit par référence
-    deleteProduct(reference: string): void {
+    deleteProduct(reference: number): void {
       const index = this.products.findIndex(product => product.reference === reference);
   
       if (index !== -1) {

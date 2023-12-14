@@ -1,6 +1,6 @@
 import { Product } from "../model/Product";
 
-export type Catalog = {
+export type CatalogTypes = {
     products: Product[];
     
     // Fonction pour chercher un produit par référence

@@ -3,4 +3,5 @@ export type ProductTypes = {
     stockQuantity: number,
     reference: number,
     price: number,
+    category: Category[] | number,
 }

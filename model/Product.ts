@@ -1,11 +1,13 @@
 import { ProductTypes } from "../types/product.types";
+import {Category} from "../types/category.types";
 
 export class Product implements ProductTypes {
     constructor(
        public description: string,
-       public stockQuantity: number,
-       public reference: number,
        public price: number,
+       public reference: number,
+       public category: Category[] | number,
+       public stockQuantity?: number,
     ){}
     
     // Fonction pour supprimer une quantité au stock
