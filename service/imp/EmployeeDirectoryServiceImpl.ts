@@ -3,50 +3,42 @@ import { Developpeur } from "../../model/Developpeur";
 import { IEmployeeDirectoryService } from "../IEmployeeDirectoryService";
 import fetch from "node-fetch";
 
-export class EmployeeDirectoryServiceImpl<T extends string | number>
-  implements IEmployeeDirectoryService
-{
-  private employees: Employee<T>[];
+export class EmployeeDirectoryServiceImpl implements IEmployeeDirectoryService {
+  private employees: Employee[];
 
-  constructor(employees: Employee<T>[]) {
+  constructor(employees: Employee[]) {
     this.employees = employees;
   }
 
   async fetchEmployes() {
-    new Promise((resolve, reject) => {
-      return fetch(
+    try {
+      const response = await fetch(
         "https://657aa1961acd268f9afb6388.mockapi.io/api/emplyee/all",
         { signal: AbortSignal.timeout(5000) }
-      )
-        .then((r: any) => r.json())
-        .then(
-          (
-            data: {
-              firstName: string;
-              lastName: string;
-              salaire: string;
-              id: string;
-            }[]
-          ) => {
-            const employees = data.map(
-              ({ firstName, lastName, salaire, id }) =>
-                new Developpeur(
-                  id === "NaN" ? undefined : parseInt(id, 10),
-                  firstName,
-                  lastName,
-                  parseInt(salaire, 10)
-                )
-            );
-            this.employees = employees as Employee<T>[];
-            console.log(`${this.employees.length} employés ajoutés !`);
-            console.log(this.employees);
-          }
-        )
-        .catch((err: Error) => console.error(err));
-    });
+      );
+      const data: {
+        firstName: string;
+        lastName: string;
+        salaire: string;
+        id: string;
+      }[] = await response.json();
+      const employees = data.map(
+        ({ firstName, lastName, salaire, id }) =>
+          new Developpeur(
+            id === "NaN" ? undefined : parseInt(id, 10),
+            firstName,
+            lastName,
+            parseInt(salaire, 10)
+          )
+      );
+      this.employees = employees;
+      return employees;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  addEmployees(employees: Employee<T>[]) {
+  addEmployees(employees: Employee[]) {
     this.employees.push(...employees);
   }
 
@@ -54,7 +46,7 @@ export class EmployeeDirectoryServiceImpl<T extends string | number>
     return this.employees;
   }
 
-  deleteEmployee(employee: Employee<T>) {
+  deleteEmployee(employee: Employee) {
     this.employees = this.employees.filter((e) => e !== employee);
   }
   deleteEmployeeByIndex(index: number) {

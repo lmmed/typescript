@@ -1,6 +1,6 @@
 import { ICanPay } from "./ICanPay";
 
-export abstract class Employee<T extends number | string> implements ICanPay {
+export abstract class Employee<T = number | string> implements ICanPay {
   constructor(
     readonly id: T | undefined,
     readonly firstName: string,
