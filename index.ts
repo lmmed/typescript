@@ -10,6 +10,8 @@ catalog.addProduct('ref2', 200, family);
 catalog.addProduct('ref3', 300, family2);
 
 
-catalog.findProductByFamily('Family 1');
+catalog.changeProductPriceByRef('ref2', 150);
 
+
+catalog.findProductByFamily('Family 1');
 catalog.findProductByRef('ref3');
