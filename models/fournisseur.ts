@@ -1,6 +1,6 @@
 import { CanPay, withId } from "../interfaces";
 
-export class Fournisseur implements CanPay, withId {
+export class Fournisseur implements CanPay, withId<string> {
   constructor(
     readonly id: string,
     readonly name: string,
