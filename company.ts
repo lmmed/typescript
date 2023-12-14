@@ -1,13 +1,10 @@
 import { Company } from "./models/company";
 import { Developpeur } from "./models/developeur";
-import { Employee } from "./models/employee";
+
 import { Fournisseur } from "./models/fournisseur";
-import { PhoneBook } from "./models/phonebook";
+
 import { Team } from "./models/team";
 import { Vendeur } from "./models/vendeur";
-
-class EmployeePhoneBook extends PhoneBook<Employee> {}
-class TeamPhoneBook extends PhoneBook<Team> {}
 
 const marketing = new Team("Marketing", "1");
 const finance = new Team("Finance", "2");
