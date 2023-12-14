@@ -1,4 +1,4 @@
-class Product {
+export default class Product {
   public get price(): number {
     return this._price;
   }
@@ -17,27 +17,29 @@ class Product {
   public set quantity(value: number) {
     this._quantity = value;
   }
-  public get designation(): string {
-    return this._designation;
+  public get description(): string {
+    return this._description;
   }
-  public set designation(value: string) {
-    this._designation = value;
+  public set description(value: string) {
+    this._description = value;
   }
+
+  private _quantity: number = 0;
+
   constructor(
-    private _designation: string,
-    private _quantity: number,
     private _ref: string,
     private _price: number,
+    private _description: string = ''
   ){
 
   }
 
-  remove(){
-    this.quantity = this.quantity - 1;
+  remove(quantity:number){
+    this.quantity = this.quantity - quantity;
   }
 
-  add(){
-    this.quantity = this.quantity + 1;
+  add(quantity:number){
+    this.quantity = this.quantity + quantity;
   }
 
   changePrice(newPrice: number) {
@@ -49,4 +51,5 @@ class Product {
       console.log("Attention quantité faible");
     }
   }
+
 }

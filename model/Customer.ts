@@ -1,5 +1,5 @@
 
-class Customer {
+export default class Customer {
   public get email(): string {
     return this._email;
   }
