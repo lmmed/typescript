@@ -1,4 +1,8 @@
-import { Employee, Team, Developpeur, Vendeur } from "./company";
+import { Employee } from "../model/Employee";
+import { Team } from "../model/Team";
+import { Developpeur } from "../model/Developpeur";
+import { Vendeur } from "../model/Vendeur";
+
 abstract class Directory<T extends Employee | Team> {
   protected members: T[];
 
