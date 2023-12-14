@@ -1,6 +1,12 @@
+import { Family } from "./family";
+
 export class Product {
     #limitLowStock = 5;
-    constructor(readonly name: string, private qte:number, readonly ref:string, private price:number) {}
+    
+    
+    constructor(private qte:number, readonly ref:string, private price:number,private family: Family, private decription?: string)  {
+        family.addProduct(this);
+     }
 
     addQte(number:number = 1) {
         this.qte += number;
