@@ -2,7 +2,7 @@ import { ICanPay } from "./ICanPay";
 
 export abstract class Employee<T extends number | string> implements ICanPay {
   constructor(
-    readonly id: T,
+    readonly id: T | undefined,
     readonly firstName: string,
     readonly lastName: string,
     readonly salaire: number
@@ -11,7 +11,7 @@ export abstract class Employee<T extends number | string> implements ICanPay {
     console.log(`pay ${this.firstName} --- salaire ${this.salaire}`);
   }
 
-  getId(): T {
+  getId(): T | undefined {
     return this.id;
   }
 

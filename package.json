@@ -16,6 +16,10 @@
   "author": "crobert",
   "license": "ISC",
   "devDependencies": {
+    "@types/node-fetch": "^2.6.9",
     "prettier": "^3.1.1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.x"
   }
 }
