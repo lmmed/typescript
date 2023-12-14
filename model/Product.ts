@@ -8,6 +8,15 @@ export class Product implements ProductTypes {
        public price: number,
     ){}
     
+    // Fonction pour supprimer une quantité au stock
+    removeQuantity(quantity: number): void {
+        if (quantity > 0) {
+        this.stockQuantity -= quantity;
+        console.log(`[${this.description}] ${quantity} unit(s) removed to stock.`);
+        } else {
+        console.log(`[${this.description}] Invalid quantity.`);
+        }
+    }
    
     // Fonction pour ajouter une quantité au stock
     addQuantity(quantity: number): void {
