@@ -1,15 +1,15 @@
 import {
   Company,
-  Employee,
+  Developer,
   Group,
-  SalesEmployee,
+  Salesman,
   Supplier,
   Team,
 } from "./oo/index";
 
 const company = new Company("OpenStudio");
-const employe1 = new Employee("John", "Doe");
-const employe2 = new SalesEmployee("Jane", "Doe");
+const employe1 = new Developer("John", "Doe");
+const employe2 = new Salesman("Jane", "Doe");
 const supplier = new Supplier("My Supplier");
 const marketing = new Team(Group.Marketing);
 const finance = new Team(Group.Finance);

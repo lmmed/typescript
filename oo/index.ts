@@ -7,6 +7,12 @@ abstract class Payable {
     if (amount < 0) {
       throw new Error("payment must be a positive value");
     }
+    console.log(
+      `Paiement envoyé de : ${new Intl.NumberFormat("fr-FR", {
+        style: "currency",
+        currency: "EUR",
+      }).format(amount)}`
+    );
     this.$amount += amount;
   }
   abstract showPaymentsAmount(): void;
@@ -63,7 +69,7 @@ export class Employee extends Payable {
   }
 }
 
-export class SalesEmployee extends Employee {
+export class Salesman extends Employee {
   performSale(amount: number) {
     if (amount < 0) {
       throw new Error("Le montant de la vente ne peut pas être négative");
@@ -72,6 +78,8 @@ export class SalesEmployee extends Employee {
     this.sendPayment(amount * 0.05);
   }
 }
+
+export class Developer extends Employee {}
 
 export enum Group {
   "Sales" = "Sales",
