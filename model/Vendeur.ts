@@ -1,13 +1,14 @@
 import { Employee } from "./Employee";
 
-export class Vendeur extends Employee {
+export class Vendeur extends Employee<string> {
   constructor(
+    readonly id: string,
     public readonly firstName: string,
     public readonly lastName: string,
     public readonly salaire: number,
     public readonly commission: number
   ) {
-    super(firstName, lastName, salaire);
+    super(id, firstName, lastName, salaire);
   }
   calculerSalaire(): number {
     return this.salaire + (this.commission / 100) * this.salaire;

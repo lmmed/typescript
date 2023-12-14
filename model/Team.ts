@@ -1,9 +1,9 @@
 import { Employee } from "./Employee";
 
 export class Team {
-  #employees: Employee[] = [];
+  #employees: Employee<string | number>[] = [];
   constructor(readonly name: string) {}
-  addMember(employee: Employee) {
+  addMember(employee: Employee<string | number>) {
     this.#employees.push(employee);
   }
   showAll() {

@@ -1,14 +1,16 @@
 import { Employee } from "../../model/Employee";
 import { IEmployeeDirectoryService } from "../IEmployeeDirectoryService";
 
-export class EmployeeDirectoryServiceImpl implements IEmployeeDirectoryService {
-  private employees: Employee[];
+export class EmployeeDirectoryServiceImpl<T extends string | number>
+  implements IEmployeeDirectoryService
+{
+  private employees: Employee<T>[];
 
-  constructor(employees: Employee[]) {
+  constructor(employees: Employee<T>[]) {
     this.employees = employees;
   }
 
-  addEmployees(employees: Employee[]) {
+  addEmployees(employees: Employee<T>[]) {
     this.employees.push(...employees);
   }
 
@@ -16,7 +18,7 @@ export class EmployeeDirectoryServiceImpl implements IEmployeeDirectoryService {
     return this.employees;
   }
 
-  deleteEmployee(employee: Employee) {
+  deleteEmployee(employee: Employee<T>) {
     this.employees = this.employees.filter((e) => e !== employee);
   }
   deleteEmployeeByIndex(index: number) {

@@ -3,7 +3,7 @@ import { Team } from "../model/Team";
 import { Developpeur } from "../model/Developpeur";
 import { Vendeur } from "../model/Vendeur";
 
-abstract class Directory<T extends Employee | Team> {
+abstract class Directory<T extends Employee<string | number> | Team> {
   protected members: T[];
 
   constructor(members: T[]) {
@@ -43,14 +43,14 @@ class GroupDirectory extends Directory<Team> {
   }
 }
 
-class EmployeeDirectory extends Directory<Employee> {
+class EmployeeDirectory extends Directory<Employee<string | number>> {
   findByName(name: string) {
     return this.members.find((member) => member.lastName === name);
   }
 }
 
-const employee1 = new Developpeur("Mohammed", "Lamhaouar", 100);
-const employee2 = new Vendeur("Jack", "Riley", 100, 5);
+const employee1 = new Developpeur(1, "Mohammed", "Lamhaouar", 100);
+const employee2 = new Vendeur("2", "Jack", "Riley", 100, 5);
 const marketing = new Team("Marketing");
 const finance = new Team("Finance");
 
