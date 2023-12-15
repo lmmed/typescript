@@ -26,4 +26,8 @@ export class Catalog {
         const product = this.findProductByRef(ref);
         product.changePrice(price);
     }
+
+    deleteProduct(ref: string) {
+        const product = this.findProductByRef(ref);
+    }
 }
