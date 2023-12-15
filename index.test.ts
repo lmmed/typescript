@@ -18,3 +18,22 @@ test("random object test", () => {
   expect(obj).toHaveProperty("firstName");
   expect(obj).not.toHaveProperty("address");
 });
+
+function fakeApi() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("data");
+    }, 500);
+  });
+}
+
+test("random promise test", () => {
+  return fakeApi().then((res) => {
+    expect(res).toBe("data");
+  });
+});
+
+test("random promise test with async test", async () => {
+  const res = await fakeApi();
+  expect(res).toBe("data");
+});
