@@ -12,3 +12,9 @@ test("random array test", () => {
   expect(list).toContain("pear");
   expect(list).not.toContain("dog");
 });
+
+test("random object test", () => {
+  const obj = { firstName: "John", lastName: "Doe", age: 15 };
+  expect(obj).toHaveProperty("firstName");
+  expect(obj).not.toHaveProperty("address");
+});
