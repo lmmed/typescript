@@ -1,4 +1,12 @@
-interface IClient {
+export interface ClientProps {
+  nom: string;
+  prenom: string;
+  adresse: string;
+  tel: string;
+  email: string;
+}
+
+export interface IClient {
   changerCoordonnees(data: {
     nom: string;
     prenom: string;
