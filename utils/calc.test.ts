@@ -20,7 +20,15 @@ describe(('Calculation function'), () => {
   });
 
   it('Division', () => {
+    expect(division([5,2])).toBe(2.5);
+    expect(() => division([5,0])).toThrow();
     expect(() => division([])).toThrow();
-    expect(() => division([])).toThrow();
+  })
+
+  it('Test', () => {
+    expect(250).toBeGreaterThan(200);
+    expect(500).toBeLessThan(550);
+    expect(500).toBeLessThanOrEqual(500);
+    expect('Coucou').toMatch(/^cou/i);
   })
 })
