@@ -30,4 +30,12 @@ test("divide", () => {
   expect(divide(10, 5)).toBe(2);
 });
 
-
+test("multi_tests", () => {
+  const value = 5.2 + 5;
+  expect(value).toBe(10.2);
+  expect(value).toBeGreaterThan(9);
+  expect(value).toBeGreaterThanOrEqual(10.2);
+  expect(value).toBeLessThan(11);
+  expect(value).toBeLessThanOrEqual(10.2);
+  expect(value).not.toBe(11);
+});
