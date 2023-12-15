@@ -39,3 +39,8 @@ test("multi_tests", () => {
   expect(value).toBeLessThanOrEqual(10.2);
   expect(value).not.toBe(11);
 });
+
+test("test async", async () => {
+  const data = await new Promise((res) => res('expected data'));
+  expect(data).toBe('expected data');
+});
