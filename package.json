@@ -1,0 +1,20 @@
+{
+  "name": "formation_ts",
+  "version": "1.0.0",
+  "description": "formation typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-typescript": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}

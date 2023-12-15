@@ -14,6 +14,16 @@ export abstract class Employee<T> implements ICanPay{
       getId(): T{
         return this.id;
       }
-
+      
+      increaseSalary = (percent:number) => {
+        return (employee:Readonly<Employee<any>) => {
+            const increase = employee.salaire * (percent / 100);
+            const salary = employee.salaire + increase;
+            return {
+                ...employee,
+                salary
+            }
+        }
+      }
       abstract calculerSalaire(): number;
 }
