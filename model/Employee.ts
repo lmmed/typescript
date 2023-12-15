@@ -1,12 +1,12 @@
-import { ICanPay } from "./ICanPay";
+import ICanPay from "./ICanPay";
 
-export abstract class Employee<T> implements ICanPay{
-    constructor( 
+export default abstract class Employee<T> implements ICanPay{
+    constructor(
         readonly id: T,
-        readonly firstName: string, 
+        readonly firstName: string,
         readonly lastName: string,
         readonly salaire: number
-      ) {} 
+      ) {}
       sendPayment(): void {
           console.log(`pay ${this.firstName} --- salaire ${this.salaire}`);
       }

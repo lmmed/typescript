@@ -1,7 +1,7 @@
-import { Employee } from "./Employee";
+import Employee from "./Employee";
 
-export class Developpeur extends Employee<number> { 
+export default class Developpeur extends Employee<number> {
     calculerSalaire(): number{
         return this.salaire;
     }
-  } 
+  }

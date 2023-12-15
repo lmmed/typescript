@@ -1,5 +1,6 @@
-import { Employee } from "./Employee";
-export class Team{
+import Employee from "./Employee";
+
+export default class Team{
     #employees: Employee<any>[]= [];
     constructor(readonly name: string){}
     addMember(employee: Employee<any>){
@@ -8,7 +9,7 @@ export class Team{
     showAll(){
         this.#employees.forEach(
             employee => console.log(employee)
-            
+
         );
     }
 }

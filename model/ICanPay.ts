@@ -1,3 +1,3 @@
-export interface ICanPay{
+export default interface ICanPay{
     sendPayment(): void;
 }

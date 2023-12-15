@@ -1,0 +1,1 @@
+{"version":3,"file":"Fournisseur.js","sourceRoot":"","sources":["../../model/Fournisseur.ts"],"names":[],"mappings":";;AAEA,MAAqB,WAAW;IAC9B,YACa,IAAY,EACZ,QAAgB;QADhB,SAAI,GAAJ,IAAI,CAAQ;QACZ,aAAQ,GAAR,QAAQ,CAAQ;IACxB,CAAC;IACJ,WAAW;QACP,OAAO,CAAC,GAAG,CAAC,OAAO,IAAI,CAAC,IAAI,gBAAgB,IAAI,CAAC,QAAQ,EAAE,CAAC,CAAC;IACjE,CAAC;CACJ;AARD,8BAQC"}
