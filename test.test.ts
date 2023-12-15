@@ -1,3 +1,4 @@
+import { after } from "lodash";
 import { sum, multiply, subtract, sumList, divide } from "./calculator"; // Assuming you have a sum function in sum.ts
 
 test("sum", () => {
@@ -57,4 +58,12 @@ beforeEach(() => {
 
 afterEach(() => {
   console.log("after each");
+});
+
+beforeAll(() => {
+  console.log("before all");
+});
+
+afterAll(() => {
+  console.log("after all");
 });
