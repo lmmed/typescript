@@ -41,6 +41,20 @@ test("multi_tests", () => {
 });
 
 test("test async", async () => {
-  const data = await new Promise((res) => res('expected data'));
-  expect(data).toBe('expected data');
+  const data = await new Promise((res) => res("expected data"));
+  expect(data).toBe("expected data");
+});
+
+test("test async", () => {
+  return new Promise((res) => res("expected data")).then((data) => {
+    expect(data).toBe("expected data");
+  });
+});
+
+beforeEach(() => {
+  console.log("before each");
+});
+
+afterEach(() => {
+  console.log("after each");
 });
