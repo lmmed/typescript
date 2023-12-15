@@ -1,6 +1,19 @@
 import { add, multiply, divide, substract } from "./operations";
 
 describe("Test all operations", () => {
+  /* beforeAll(() => {
+    console.log("Début du test sur les opérations");
+  });
+  afterAll(() => {
+    console.log("Fin du test sur les opérations");
+  });
+  beforeEach(() => {
+    console.log("Début du test");
+  });
+  afterEach(() => {
+    console.log("Fin du test");
+  });*/
+
   it("should validate add", () => {
     expect(add(1, 1)).toBe(2);
     expect(add(5, -1)).toBe(4);
